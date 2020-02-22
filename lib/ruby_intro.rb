@@ -22,24 +22,13 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  if arr.size <= 1
-    return false
-  end
-  pairs = {}
-  arr.each {
-    |x|
-    pairs[x] = n-x
-  }
-  puts pairs
-  pairs.each {
-    |k, v|
-    if pairs.key? v
-      if pairs[v] == pairs[k]
-        return false
-      else
-        return true
-      end
+  dict = {}
+  arr.each_with_index {
+    |i, j|
+    if dict[n - i]
+      return true
     end
+    dict[i] = j
   }
   return false
 end
